@@ -1,0 +1,20 @@
+<!--pages/cetificate/certificate.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="section">
+    <view class="section_title " > <text style='letter-spacing:25px;'>姓</text> 名</view>
+    <input name="name" placeholder="请输入姓名" placeholder-class='placeholder' />
+  </view>
+  <view class="section">
+    <view class="section_title">证件类型</view>
+    <input value='身份证' disabled='true'/>
+  </view>
+  <view class="section">
+    <view class="section_title letter_space">证   件   号</view>
+    <input name="idNumber" placeholder="请输入证件号" placeholder-class='placeholder' />
+  </view>
+  <view class="section">
+    <view class="section_title letter_space">手   机   号</view>
+    <input name="phoneNumber" placeholder="请输入手机号" placeholder-class='placeholder' />
+  </view>
+  <button formType="submit" class="submit_button">确定</button>
+</form>

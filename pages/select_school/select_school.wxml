@@ -1,0 +1,28 @@
+<!--pages/select_school/select_school.wxml-->
+<view class='search'>
+
+  <!--搜索栏头部  -->
+  <view class='search_head'>
+
+    <view class='search_head_left'>
+      <icon type="search" size="15" color="gray" class='search_activity_img' />
+      <icon type="clear" size="15" color="gray" class='clear_img' catchtap='clearInput' wx:if="{{showClear==true}}" />
+      <input placeholder='搜索学校名称' placeholder-style='font-size:0.8rem' bindinput="bindKeyInput" value='{{inputValue}}'></input>
+    </view>
+    <view class='search_head_right' catchtap='tapCancel' >取消</view>
+
+  </view>
+
+
+ 
+
+<!--兼职列表  -->
+  <scroll-view class='scroll_content' scroll-y="true" wx:if="{{ishowShoolList==true}}" style='padding-top:15%;'>
+<view class="schoo_name" wx:for="{{shoolList}}" data-item="{{item}}" bindtap='chooseSchool'>{{item.school_name}}</view>
+
+
+
+    
+  </scroll-view>
+
+</view>

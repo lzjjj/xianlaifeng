@@ -1,0 +1,5 @@
+<!--pages/edit_descrition/edit_descrition.wxml-->
+<textarea  placeholder='填写活动详情介绍，最多5000字' maxlength="-1" placeholder-style='font-size:0.85rem;' bindinput="changeDetail" value="{{details}}">
+</textarea>
+
+<button bindtap='handleNavigate'>确定</button>

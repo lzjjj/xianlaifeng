@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/activity/activity",
+    "pages/release_activity/release_activity",
+    "pages/editresume/editresume",
+    "pages/myresume/myresume",
+    "pages/release_job/release_job",
+    "pages/cetificate/certificate",
+    "pages/edit_descrition/edit_descrition",
+    "pages/message/message",
+    "pages/myrelease/myrelease",
+    "pages/enlist_manger/enlist_manger",
+    "pages/mycollect/mycollect",
+    "pages/index/index",
+    "pages/searchjob/searchjob",
+    "pages/selectcity/selectcity",
+    "pages/enlist_record/enlist_record",
+    "pages/job_detail/job_detail",
+    "pages/select_school/select_school",
+    "pages/personal/personal",
+    "pages/release/release",
+    "pages/activity_detail/activity_detail",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FCD917",
+    "navigationBarTitleText": "闲来蜂",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "#FFFFFF",
+    "color": "#cdcdcd",
+    "selectedColor": "#cdcdcd",
+    "list": [
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "imgs/activity_unselected.png",
+        "selectedIconPath": "imgs/activity_selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "兼职",
+        "iconPath": "imgs/parttime_unselected.png",
+        "selectedIconPath": "imgs/parttime_selected.png"
+      },
+      {
+        "pagePath": "pages/release/release",
+        "text": "发布",
+        "iconPath": "imgs/release.png",
+        "selectedIconPath": "imgs/release.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "客服",
+        "iconPath": "imgs/message_unselected.png",
+        "selectedIconPath": "imgs/message_selected.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "imgs/user_unselected.png",
+        "selectedIconPath": "imgs/user_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

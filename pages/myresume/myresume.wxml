@@ -1,0 +1,31 @@
+<!--pages/myresume/myresume.wxml-->
+<view class='myresume'>
+  <view class='personal_head' style='height:28%;'>
+
+
+    <image src='{{resume.user_img}} ' class="userinfo-avatar"></image>
+
+
+    <!-- <image src='http://120.78.73.211/img/xianlaifeng/user.jpg' class="userinfo-avatar" class="userinfo-avatar"></image> -->
+  </view>
+
+  <view class='basic_msg'>
+    <view class='basic_msg_title'>
+      <view class='basic_msg_title_left'></view>
+      <view  class='basic_msg_title_center'>基本信息</view>
+      <view  class='basic_msg_title_right' bindtap='goToEdit'><image src='/imgs/edit.png' ></image></view>
+    </view>
+    
+    <view style='margin-top:5%'><text style='letter-spacing:1.9rem;'>姓名</text> <text>{{resume.user_name}}</text></view>
+    <view style='margin-top:5%'><text style='letter-spacing:1.9rem;'>性别</text> <text>{{resume.user_sex==0?"------":(resume.user_sex==1?"男":"女")}}</text></view>
+    <view style='margin-top:5%'><text style=';letter-spacing:1.9rem;'>年龄</text> <text>{{resume.user_age}} 岁</text></view>
+    <view style='margin-top:5%'><text style='letter-spacing:1.9rem;'>身高</text> <text>{{resume.user_high}} cm</text></view>
+    <view style='margin-top:5%'><text style='letter-spacing:1.9rem;'>体重</text> <text>{{resume.user_weigh}} kg</text></view>
+    <view style='margin-top:5%'><text style='padding-right:8%;'>手机号码</text> <text>{{resume.user_phone==null?"------":resume.user_phone}}</text></view>
+    <view style='margin-top:5%'><text style='padding-right:8%;'>所在学校</text> <text>{{resume.school_name}}</text></view>
+  
+  </view>
+
+  
+
+</view>

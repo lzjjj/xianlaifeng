@@ -1,0 +1,53 @@
+<!--pages/activity_detail/activity_detail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+
+<scroll-view class="activity">
+  <image src='{{activityDetail.activityPic}}' class='activity_img'>
+
+  </image>
+  <view class='activity_title'>{{activityDetail.activityName}}</view>
+  <view style='color:gray;font-size:0.85rem;'>
+    <image src='/imgs/time_icon.png' class='time_icon'></image>
+    <text>{{activityDetail.activityStartTime}}~{{activityDetail.activityEndTime}}</text>
+  </view>
+  <view bindtap='markertap'>
+
+    <image src='/imgs/location.png' class='time_icon'></image>
+    <text style='font-size:0.85rem;color:gray;'>{{activityDetail.activityDistrict}}{{activityDetail.activityLocation}}</text>
+
+  </view>
+  <view style='padding-bottom:3%;'>
+
+    <image src='/imgs/members.png' class='time_icon'></image>
+    <text style='font-size:0.85rem;color:gray;'>限{{activityDetail.activityPerson}}人</text>
+
+  </view>
+  <view style='width:100%;background-color:#F5F5F5;padding-top:3%;'></view>
+  <view class='activity_content'>
+    <map id="map" longitude="{{activityDetail.activityLongitude}}" latitude="{{activityDetail.activityLatitude}}" scale="14" markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; height:10rem;margin-bottom:0.9rem;"></map>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</scroll-view>
+<view class='activity_detail_bottom'>
+
+ 
+  <view class='activity_detail_bottom_left' bindtap='optionpCollection'>
+    <image wx:if="{{isCollection==0}}" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAANlBMVEUAAAD82Rb82Rb/2hX/1xD/3xD72Rb82Rb92xT82Rb72Rb82Bf82Rb82Bf82Rb82Bf82hX82ReaS49lAAAAEXRSTlMA8IAwIBDQoD+wkMBP4J/fYNRpG6YAAADeSURBVDjLxZLRjoQwCEUBKa1Vx+X/f3axXbNhWofHuS/mmtMjmMK3k2vMFFUOoRUxRwwrUajKmBLmUARgqkgEYKpQ1FSR6KOq7NRETUV7AZelUN1QLZL6m3Rc7dwqleXv91k/Wh9OXuzaK54JHpJOtKOdkgeK5WaeqQVx8S1i7j4y8RsZzwmym3k6565+AC0whtR3pdm93XyXdQJJfjskrno98/j5O6UPyi/VF4+L9PwoNwSJsGGs+2y5VA257jihPWfrbWKGel+6bPhkvUM183/lrDquJ4a48CrwnfwCG8EHPFwz7s8AAAAASUVORK5CYII='></image>
+    <text wx:if="{{isCollection==0}}">收藏</text>
+    <image wx:if="{{isCollection==1}}" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAANlBMVEUAAAD88Av87wv87wr88Ar77wj88Ar/7wv/7wj88Av88Ar78Av/7wD97wn88gv88gr78Ar88AtFCKJrAAAAEXRSTlMAwGCggEDgMCDvsJAQcF9Pz5dvibQAAAC+SURBVDjLndPbDoQgDEXRKVcBL9P//9kRIzLmFDDuV1dsUuDzLu8fIKKxscx2iBzzd2QU76m+mV1Gbu4iw0em+6PAR6H3K81nqW0mvpqaJlYUBeU3Q4FvBTKbv76vibgZpdXnYxjm8457lf2roRkqVQ+j2QKbxjScR9OgQlMjNCTcJMgAitK0V+MCIgeIheBCIcHraesQx2fwlJdC1H7ghSlxTVTuBYmLipnYv/EkLIpYF1KYhkWlSXhiedzjfl6bIr5L6UDRAAAAAElFTkSuQmCC'></image>
+    <text wx:if="{{isCollection==1}}">已收藏</text>
+  </view>
+  <view class='activity_detail_bottom_left' wx:if="{{activityDetail.activityStatus==1}}">
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:1%;'>
+   </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:30%;'>
+   </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:60%;'>
+  </contact-button>
+    <image src='/imgs/consult.png'></image>
+    <text>咨询</text>
+  </view>
+  <button wx:if="{{activityDetail.activityStatus==1}}" bindtap='handleEnlist' data-id="{{id}}" data-time='{{activityDetail.activityEndTime}}' class='button_allow'>我要报名</button>
+ <button wx:if="{{activityDetail.activityStatus==0}}" class='button_notallow'>审核中...</button>
+  <button wx:if="{{activityDetail.activityStatus==2}}" class='button_notallow'>活动已下架</button>
+</view>

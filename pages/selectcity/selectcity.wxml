@@ -1,0 +1,29 @@
+<!--pages/selectcity/selectcity.wxml-->
+<scroll-view scroll-y="true" scroll-into-view="{{toView}}" scroll-with-animation="true" class='slelect_city'>
+  <view class='localcity'>当前城市</view>
+
+  <view class='city_box' style='border:1px solid #FCD917;color:#FCD917;margin: 5%;' data-city="{{locatedCity}}" bindtap='selectCity'>{{locatedCity}}</view>
+
+  <view class='localcity'>热门城市</view>
+  <view class='hot_city_content' style='padding-bottom:3%'>
+    <view class='city_box' style='margin-left: 5%;margin-top:2%;' wx:for="{{hotCity}}" bindtap='selectCity' data-city="{{item.city}}">{{item.city}}</view>
+
+
+
+
+  </view>
+  <view class='city_character'>城市字母</view>
+  <view class='city_character_content'>
+    <view class='character_box' wx:for="{{characterList}}" data-opt="{{item}}"  bindtap='jumpTo'>{{item}}</view>
+
+
+  </view>
+
+
+  <view wx:for="{{allCityList}}" wx:key="{{item.FirstLetter}}" wx:if="{{item.city_list}}">
+    <view class='localcity' id="{{item.FirstLetter}}"  data-rol="{{item.FirstLetter}}">{{item.FirstLetter}}</view>
+     <view class='hot_city_content' style='padding-bottom:3%'> 
+       <view class='city_box' style='margin-left: 5%;margin-top:2%;' wx:for="{{item.city_list}}" wx:key="i" wx:for-item="i" data-city="{{i.city_name}}" bindtap='selectCity'>{{i.city_name}}</view> 
+     </view> 
+  </view>
+</scroll-view>

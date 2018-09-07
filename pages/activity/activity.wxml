@@ -1,0 +1,36 @@
+<!--pages/activity/activity.wxml-->
+<!--搜索栏  -->
+<view class='activity_head'>
+
+  <view class="activity_location" bindtap='goToSelectCity'>
+    <text>{{locatedCity}}</text>
+    <image src='/imgs/down.png' class='img_down'></image>
+  </view>
+  <!-- <icon type="search" size="15" color="gray" class='search' /> -->
+  <view class=' activity_input'>
+
+    <input class='search_img' placeholder='搜索你喜欢的活动' placeholder-class='placeholder_style ' disabled="true" bindtap='goToSearch'>
+    </input>
+  </view>
+</view>
+
+<view class='activity_content'>
+  <view class='activity_content_item' bindtap='goToActivityDetail' data-id="{{item.id}}" wx:for="{{activityList}}">
+    <image src='{{item.activityPic}}' style=''></image>
+    <view class='item_title activity_content_item_title'>{{item.activityName}}</view>
+    <view class=' activity_content_item_msg'>
+      <view style='width:76%;text-align:left;'>
+        <image src='/imgs/time_icon.png' class='time_icon'></image>
+        <text>{{item.activityStartTime}}开始</text>
+      </view>
+      <view style='width:22%;padding-bottom:0.5rem;'>
+
+        <image src='/imgs/location.png' style='width:0.875rem;height:0.875rem;vertical-align:middle;margin-right:0.34rem;'></image>
+        <text>{{item.activityDistrict}}</text>
+
+      </view>
+    </view>
+  </view>
+  <view class='no_content' wx:if='{{showNone==true}}'>
+  </view>
+</view>

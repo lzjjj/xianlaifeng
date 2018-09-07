@@ -1,0 +1,41 @@
+<!--pages/enlist_manger/enlist_manger.wxml-->
+<scroll-view class='enlist_manger' scroll-y="true">
+  <view class='title'>共{{ActivityList.length}}人报名</view>
+  <view class='list-item' wx:for="{{ActivityList}}">
+    <view class='list-item-msg'>
+      <image src='{{item.user_img}}'> </image>
+      <view>
+        <view>
+          <text class='letter-space'>姓名</text>：{{item.user_name}}</view>
+        <view>
+          <text class='letter-space'>电话</text>：{{item.user_phone}}</view>
+        <view>报名时间：{{item.joinTime}}</view>
+      </view>
+      <button bindtap='updateJoinStatus' data-id='{{item.id}}' data-index='{{index}}' wx:if="{{item.joinStatus==0}}">通过</button>
+     <image src='data:image/png;base64,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' wx:if="{{item.joinStatus==1}}" class='pass'></image>
+    </view>
+    <view class='list-item-img' bindtap='handleDiv' data-index="{{index}}" wx:if="{{!item.isShow}}">
+      <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAM1BMVEUAAAD/3xD82Rb72Rb/2hX82Rb82hX/1xD82Rb82Rb82xT82Rb82Bf92Bf82Bf72Bf82Rc3jWp/AAAAEHRSTlMAEPDQMKBgIIBQQLDAcOCQz0lsIQAAAL1JREFUSMftkkEWgyAQQwUVQWqb+5+2lk3evIFm127IMjrK/8wyM/OjHOchXsinLQoQt28TWwSKaSqANYwnQgTwMFUGq15W3Mn2K617jSZ28BTmrEDqTyTcifRDASMFJz6hMIvzDB297QAXC6ZSgcfcWXgFCl0ruCy6UEB0VlrB0XfvFWh0r8ei87FWkBtbWEQKeYtCt1YDfyhCAI+uFVSF7veQVyTCK3eLIBV4dK3AL7VWUG2lZ1JaZmb+lDfXmQ3WqTC5hwAAAABJRU5ErkJggg=='
+        style='width:20px;height:20px;' ></image>
+    </view>
+
+    <view class='list-item-img' bindtap='handleDiv' data-index="{{index}}" wx:if="{{item.isShow}}">
+      <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAOVBMVEUAAAD/3xD82Rb/2hX82Rb82hX72Rb72xT72Rb82Rb82Bf82Bf72Rb/1xD72Bf92Bf92Rb82Rb82Rfwd5MFAAAAEnRSTlMAEPAwoGDQQM+w4MCAIJBwf1B8H5OnAAAAuElEQVRIx+2T2xKCMBBDu6XUcili//9jlR3UkThk+6rNA8zABuZkU9f065J1lUpHKiXVeabyUKhxLEV1tTv6sutidXT+afHZiD5u03PYrkns6INzcb9z6dejOCde/2ZE950yKc+Nor+SetsJuv/YhyWCpFuHKDg6BM7QM6615+iYIEPHio7C0LENE0XHzi0cHSNg6DwCOc9y/hJBIGd90PfwKJ51L0JxOo9hHQaAVJD8OJBdU9Of6w4pCA9E0IiHxwAAAABJRU5ErkJggg=='
+        style='width:20px;height:20px;'></image>
+    </view>
+    <view class='list-item-extra' wx:if="{{item.isShow}}">
+      <view>姓名:{{item.user_name}}</view>
+      <view wx:if="{{item.user_sex==0}}">性别:保密</view>
+      <view wx:if="{{item.user_sex==1}}">性别:男</view>
+      <view wx:if="{{item.user_sex==2}}">性别:女</view>
+      <view>电话:{{item.user_phone}}</view>
+      <view>学校:{{item.school_name}}</view>
+      <view>身高:{{item.user_high}}cm</view>
+      <view>体重:{{item.user_weigh}}kg</view>
+      <view>年龄:{{item.user_age}}岁</view>
+    </view>
+  </view>
+  <view class='no_content' wx:if='{{showNone==true}}'>
+    </view> 
+    
+</scroll-view>

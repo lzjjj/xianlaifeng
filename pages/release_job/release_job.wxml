@@ -1,0 +1,210 @@
+<!--pages/release_job/release_job.wxml-->
+<scroll-view scroll-y="true" class='release_job'>
+
+
+  <view class="weui-cells" style="margin-top:3%;">
+
+    <view class="weui-cell weui-cell_access cell_style picker_border ">
+      <div class="weui-cell__bd job_item">
+
+        <p>兼职标题 </p>
+        <input placeholder='请输入兼职标题' placeholder-class='job_item_placeholder' bindinput='changeJobName'></input>
+      </div>
+
+
+    </view>
+
+    <picker class='picker_border' range='{{jobTypeListAll}}' bindchange='changeJobType' value='{{jobData.jobType}}'>
+
+      <view class="weui-cell weui-cell_access cell_style">
+        <div class="weui-cell__bd">
+
+          <p>兼职类型 </p>
+        </div>
+
+        <p>{{jobData.jobType}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+    </picker>
+
+
+
+    <view class='picker_border'>
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd job_item">
+
+          <p>招聘人数 </p>
+          <input placeholder='请输入招聘人数' placeholder-class='job_item_placeholder' bindblur="changeLimitNumber"></input>
+        </div>
+
+
+      </view>
+    </view>
+
+
+    <picker range='{{sexList}}' class='picker_border' bindchange='changeSexDemand' value='{{jobData.sexDemand}}'>
+
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd">
+
+          <p>性别要求 </p>
+        </div>
+        <p>{{jobData.sexDemand}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+
+    </picker>
+
+
+    <picker range='{{calculateTypeList}}' class='picker_border' bindchange="changeCalculateMoneyType" value='{{jobData.calculateMoneyType}}'>
+
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd">
+
+          <p>结算方式 </p>
+        </div>
+        <p>{{jobData.calculateMoneyType}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+
+    </picker>
+
+    <view class='picker_border'>
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd job_item">
+
+          <p>基本工资 </p>
+          <input style='width:60%;' placeholder='请输入金额' placeholder-class='job_item_placeholder' bindblur="changeWage"></input>
+        </div>
+
+        <picker range='{{payUnitList}}' style="margin-right:-3%;" bindchange="changeWageType" value='{{jobData.wageType}}'>
+          <p>{{jobData.wageType}}</p>
+          <image src='/imgs/turnright.png' class='arrow_img'></image>
+        </picker>
+
+
+      </view>
+    </view>
+
+
+
+    <picker class='picker_border' mode="date" value="{{jobData.startWorkDate}}" start="2015-09-01" end="2217-09-01" bindchange="bindStartWorkDate">
+
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd">
+
+          <p>开始日期 </p>
+        </div>
+        <p>{{jobData.startWorkDate}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+
+    </picker>
+
+
+    <picker mode="date" value="{{jobData.endWorkDate}}" start="2015-09-01" end="2217-09-01" bindchange="bindEndWorkDate" class='picker_border'>
+
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd">
+
+          <p>结束日期 </p>
+        </div>
+        <p>{{jobData.endWorkDate}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+
+    </picker>
+
+
+
+    <view class='picker_border' >
+      <view class="weui-cell weui-cell_access cell_style " >
+        <div class="weui-cell__bd job_item" style="margin-left:-1%;">
+
+          <p >上班时段 </p>
+          <picker style='padding-left:5%' mode="time" value="{{startTime}}" start="00:00" end="24:00" bindchange="bindStartTime">
+          <input style='width:5rem' value="{{startTime}}" placeholder='上班时间' placeholder-class='job_item_placeholder' disabled='true'></input>
+           </picker>
+          至
+            <picker style='padding-left:5%'  mode="time" value="{{endTime}}" start="{{startTime}}" end="24:00" bindchange="bindEndime">
+           <input style='width:5rem' placeholder='下班时间' placeholder-class='job_item_placeholder' value="{{endTime}}" disabled='true'></input>
+            </picker>
+        </div>
+
+
+      </view>
+    </view>
+
+
+
+    <view class='picker_border'>
+
+      <view class="weui-cell weui-cell_access cell_style  " style='width:120%'>
+        <div class="weui-cell__bd job_item" style="margin-left:-1%;">
+
+          <p>工作地点 </p>
+          <input style='width:75%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size:0.8rem;color:black;' placeholder='定位工作地点' disabled='true' placeholder-class='city_choose' bindtap="getLocation" value="{{jobData.workProvince}}{{jobData.workCity}}{{jobData.workDistrict}}{{jobData.workStreet}}"></input>
+        </div>
+
+
+      </view>
+
+    </view>
+
+  </view>
+  <view class='job_describe'>
+    <view>兼职描述</view>
+    <textarea placeholder='请输入相关工作内容，岗位要求等，20~2000字' placeholder-class='job_item_placeholder' bindinput="changeJobContent"></textarea>
+  </view>
+
+
+  <view class="weui-cells" style="margin-top:3%;">
+    <view class="picker_border">
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd job_item">
+
+          <p>发布机构 </p>
+          <input placeholder='请输入机构名（非必填）' placeholder-class='job_item_placeholder' value="{{resume.user_company}}" disabled='true'></input>
+        </div>
+
+
+      </view>
+    </view>
+
+
+    <view class="picker_border">
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd job_item">
+
+          <p style="letter-spacing:8px;">发布人 </p>
+          <input placeholder='请输入机构名（非必填）' style='margin-left: 2%;' placeholder-class='job_item_placeholder'  value="{{resume.user_name}}" disabled='true'></input>
+        </div>
+
+
+      </view>
+    </view>
+
+
+    <view class="picker_border">
+      <view class="weui-cell weui-cell_access cell_style  ">
+        <div class="weui-cell__bd job_item">
+
+          <p>联系电话 </p>
+          <input placeholder='请输入机构名（非必填）' placeholder-class='job_item_placeholder' value="{{resume.user_phone}}" disabled='true'></input>
+        </div>
+
+
+      </view>
+    </view>
+
+
+  </view>
+
+
+  <button class='release_button' bindtap='releaseJob'>发布兼职</button>
+</scroll-view>

@@ -1,0 +1,53 @@
+<!--pages/myrelease/myrelease.wxml-->
+<view class='myrelease'>
+
+   <view class='myrelease_head'>
+    <!-- <view class="{{isParttime?'title_actived':'title_unactived'}}" bindtap='selectRecord' data-id="2">兼职</view>
+    <view class="{{isParttime==false?'title_actived':'title_unactived'}}" data-id="1" bindtap='selectRecord'>活动</view> -->
+  </view> 
+  <scroll-view scroll-y="true" style='width:100%;height:100%;box-sizing: border-box;'>
+    <view class='myrelease_item' wx:for="{{PTJList}}" wx:if="{{isParttime}}">
+    <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAAAOVBMVEUAAACJiYmPj4+KioqKioqKioqKioqKioqJiYmKioqHh4eKioqLi4uJiYmKioqKioqKioqKioqKiooMsZTvAAAAEnRSTlMA0BBgwPAwn6CAIJBAcFCw4G/leon1AAACZ0lEQVRo3u3X267bIBAF0OFu8C3h/z+2qcFnp6KRjuzZL+2ZBycClBWDGcaS661I8p2w5j9VphjoihfhK9X9G8pq+IoTS1NgCF1xGMRQYIinrT4MiYGjwLCRp2A9AlOZzq43xYiu8vjqgGIsBqsoe2+GAkNH6TOTa4VSsGf0FCeyVSh/DHtoKu5dwSBjnbqCx7cPWURYysPgtvQVxI/yPcUsga1sqx1TlhdVZWxveUxX+WDoKml7hr8Zs9K6IEYj1UBTYFSWAuNRWQoMYz1JgRGslHoqXlfBehSRqSupjjHfULDmWSSi3Y9vThcVGL2cMaifXJ0uIFBG44gosr4lhSJuQC4py5tR1z5fSHB5QK4oIcKou+C/m/h7dBiQi0rC9y/DO2TLAbm5K3OftRabgwLkhjLuh5JqsFCAKChmrY8559yK/wFRUYwVd3ya05gcEA0F2dFYO3fjdQGiqRzX0zgVLxQlH4btihcNxWyz935q0+SXbT+MGFxTvGgoRRCbtaYbreYHck8J2fae0vqjSAm1W0Duztj+XJZnCu33Ungp02l8QG6elUt7CJZmAFFRUEseSjOA3FbGWjIsIluoH5DbZ+WZuLxHWlFTSjP8h/NERzH2ZRyli41QgGgpqR3xa4ACREkJ/Xjc60tJCgiU8Xz0L2+vA6KoGBEAQJSVInlA1JVZ4oDoKyUNiL4yvuYzFAIChYNAYSJQmAgUJgKFiUBhIlCYCBQmAoWJQGEiUJgIFCYChYlAYSJQmAgUJgKFiUBhIlCYCBQmAoWJQGEiUJgIFCYChYlAYSJQmAgUJgKFiUAhIlDmX15v9h4/GD9NAAAAAElFTkSuQmCC' wx:if="{{item.audit_status==2}}" class='offselve_img'></image>
+      <view class='title'>{{item.job_name}}</view>
+      <view class='msg'>
+       
+        <view >
+         
+        发布时间:<text>{{item.release_time}}</text>
+        </view>
+         <view>报名人数:<text>{{item.joinNum}}</text>人</view>
+      </view>
+      <view class='option'>
+        <view class="{{item.audit_status==2?'option_left offselve_title':'option_left'}}"   bindtap='offShelve' data-id='{{item.job_id}}' data-index='{{index}}'>下架兼职</view>
+        <view class='vertical-line'></view>
+        <view class='option_middle' bindtap='goToEnlist' data-id='{{item.job_id}}' data-option='2'>查看报名</view>
+        <view class='vertical-line'></view>
+        <view class='option_right'  bindtap='goToJobDetail' data-id="{{item.job_id}}">查看兼职</view>
+      </view>
+     
+    </view>
+
+    <view class='myrelease_item' wx:for="{{activityList}}" wx:if="{{!isParttime}}">
+    <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAAAOVBMVEUAAACJiYmPj4+KioqKioqKioqKioqKioqJiYmKioqHh4eKioqLi4uJiYmKioqKioqKioqKioqKiooMsZTvAAAAEnRSTlMA0BBgwPAwn6CAIJBAcFCw4G/leon1AAACZ0lEQVRo3u3X267bIBAF0OFu8C3h/z+2qcFnp6KRjuzZL+2ZBycClBWDGcaS661I8p2w5j9VphjoihfhK9X9G8pq+IoTS1NgCF1xGMRQYIinrT4MiYGjwLCRp2A9AlOZzq43xYiu8vjqgGIsBqsoe2+GAkNH6TOTa4VSsGf0FCeyVSh/DHtoKu5dwSBjnbqCx7cPWURYysPgtvQVxI/yPcUsga1sqx1TlhdVZWxveUxX+WDoKml7hr8Zs9K6IEYj1UBTYFSWAuNRWQoMYz1JgRGslHoqXlfBehSRqSupjjHfULDmWSSi3Y9vThcVGL2cMaifXJ0uIFBG44gosr4lhSJuQC4py5tR1z5fSHB5QK4oIcKou+C/m/h7dBiQi0rC9y/DO2TLAbm5K3OftRabgwLkhjLuh5JqsFCAKChmrY8559yK/wFRUYwVd3ya05gcEA0F2dFYO3fjdQGiqRzX0zgVLxQlH4btihcNxWyz935q0+SXbT+MGFxTvGgoRRCbtaYbreYHck8J2fae0vqjSAm1W0Duztj+XJZnCu33Ungp02l8QG6elUt7CJZmAFFRUEseSjOA3FbGWjIsIluoH5DbZ+WZuLxHWlFTSjP8h/NERzH2ZRyli41QgGgpqR3xa4ACREkJ/Xjc60tJCgiU8Xz0L2+vA6KoGBEAQJSVInlA1JVZ4oDoKyUNiL4yvuYzFAIChYNAYSJQmAgUJgKFiUBhIlCYCBQmAoWJQGEiUJgIFCYChYlAYSJQmAgUJgKFiUBhIlCYCBQmAoWJQGEiUJgIFCYChYlAYSJQmAgUJgKFiUAhIlDmX15v9h4/GD9NAAAAAElFTkSuQmCC' wx:if="{{item.activityStatus==2}}" class='offselve_img'></image>
+      <view class='title'>{{item.activityName}}</view>
+      <view class='msg'>
+       
+        <view>
+        发布时间:<text class=''>{{item.activityCreateTime}}</text>
+        </view>
+        <view>报名人数:<text class=''>{{item.joinNum}}</text>人</view>
+      </view>
+     
+     
+      <view class='option'>
+        <view class="{{item.activityStatus==2?'option_left offselve_title':'option_left'}}" bindtap='offActShelve' data-id='{{item.id}}' data-index='{{index}}'>下架活动</view>
+        <view class='vertical-line'></view>
+        <view class='option_middle' bindtap='goToEnlist' data-id='{{item.id}}' data-option='1'>查看报名</view>
+        <view class='vertical-line'></view>
+        <view class='option_right' bindtap='goToActivityDetail' data-id='{{item.id}}'>查看活动</view>
+
+      </view>
+    </view>
+  </scroll-view>
+
+</view>

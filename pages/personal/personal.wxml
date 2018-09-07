@@ -1,0 +1,70 @@
+<!--pages/personal/personal.wxml-->
+<view class='personal'>
+
+  <view class='personal_head'>
+
+  
+    <image src='{{userInfo.avatarUrl}}' class="userinfo-avatar"></image>
+
+
+    <!-- <image src='http://120.78.73.211/img/xianlaifeng/user.jpg' class="userinfo-avatar" class="userinfo-avatar"></image> -->
+  </view>
+
+  <view class="weui-cells" style="margin-top:3%;">
+    <navigator class="weui-cell weui-cell_access cell_style cell_height " url="/pages/myresume/myresume">
+      <div class="weui-cell__bd">
+        <image src='/imgs/myresume.png ' class="img_style"></image>
+        <p>我的信息 </p>
+      </div>
+
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </navigator>
+
+
+    <navigator class="weui-cell weui-cell_access cell_style cell_height " url="/pages/enlist_record/enlist_record">
+      <div class="weui-cell__bd">
+        <image src='/imgs/Registration_record.png ' class="img_style"></image>
+        <p>报名记录 </p>
+      </div>
+
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </navigator>
+
+    <navigator class="weui-cell weui-cell_access cell_style cell_height" url="/pages/myrelease/myrelease">
+      <div class="weui-cell__bd">
+        <image src='/imgs/myrelease.png' class="img_style"></image>
+        <p>我的发布 </p>
+      </div>
+
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </navigator>
+
+
+
+    <navigator class="weui-cell weui-cell_access cell_style cell_height" url="/pages/mycollect/mycollect">
+      <div class="weui-cell__bd">
+        <image src='/imgs/mycollect.png' class="img_style"></image>
+        <p>我的收藏 </p>
+      </div>
+
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </navigator>
+    
+    <!-- <navigator class="weui-cell weui-cell_access cell_style cell_height" url="/pages/cetificate/certificate">
+      <div class="weui-cell__bd">
+        <image src='/imgs/certification.png' class="img_style"></image>
+        <p>实名认证 </p>
+      </div>
+
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </navigator> -->
+  </view>
+
+
+
+</view>

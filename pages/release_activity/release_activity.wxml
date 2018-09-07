@@ -1,0 +1,129 @@
+<!--pages/release_activity/release_activity.wxml-->
+<scroll-view scroll-y="true" class='release_activity'>
+  <image src="{{activityData.activityPic}}" style='width:100%;' wx:if="{{activityData.activityPic!=''}}" bindtap='previewImg' data-url='{{activityData.activityPic}}'></image>
+  <view class="weui-cells" style="margin-top:3%;">
+    <view class="weui-cell weui-cell_access cell_style  picker_border">
+      <div class="weui-cell__bd activity_item">
+        <input style='padding-top:3%;' placeholder='活动标题' placeholder-class='' bindblur='changeActivityTitle'></input>
+        <image src='/imgs/add_img.png' class='add_img' bindtap='showModalPic'></image>
+      </div>
+    </view>
+
+    <picker class='picker_border' mode="date" value="{{startDate}}" start="2015-09-01" end="2217-09-01" bindchange="bindStartDate">
+
+      <view class="weui-cell weui-cell_access cell_style">
+        <div class="weui-cell__bd">
+
+          <p>开始日期</p>
+        </div>
+
+        <p>{{startDate}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+    </picker>
+    <picker class='picker_border' mode="time" value="{{startTime}}" start="00:00" end="24:00" bindchange="bindStartTime">
+
+      <view class="weui-cell weui-cell_access cell_style">
+        <div class="weui-cell__bd">
+
+          <p>开始时间</p>
+        </div>
+
+        <p>{{startTime}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+    </picker>
+
+    <picker class='picker_border' mode="date" start="{{startDate}}" end="2217-09-01" bindchange='bindEndDate' value='{{endDate}}'>
+
+      <view class="weui-cell weui-cell_access cell_style ">
+        <div class="weui-cell__bd">
+
+          <p>结束日期 </p>
+        </div>
+
+        <p>{{endDate}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+    </picker>
+
+    <picker class='' mode="time" start="{{startTime}}" end="24:00" bindchange='bindEndTime' value='{{endTime}}'>
+
+      <view class="weui-cell weui-cell_access cell_style ">
+        <div class="weui-cell__bd">
+
+          <p>结束时间 </p>
+        </div>
+
+        <p>{{endTime}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+      </view>
+    </picker>
+    <view class="weui-cell weui-cell_access cell_style picker_border">
+      <div class="weui-cell__bd activity_item">
+
+        <p style="width:25%;">活动人数 </p>
+        <input class='activit-input' placeholder='请输入活动人数' placeholder-class='activity_item_placeholder' bindblur='changeActivityNum'></input>
+      </div>
+
+      <p>{{jobData.jobType}}</p>
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </view>
+    <view class='picker_border'>
+      <view class="weui-cell weui-cell_access cell_style  " style="width:120%" bindtap="getLocation">
+        <div class="weui-cell__bd ">
+          <p>活动地点 </p>
+        </div>
+        <p style="color:black;font-size:0.85rem;">{{activityData.activityProvince}} {{activityData.activityCity}} {{activityData.activityDistrict}}</p>
+        <image src='/imgs/turnright.png' class='arrow_img' style='margin-right:22%;'></image>
+      </view>
+    </view>
+
+
+    <view class='picker_border'>
+      <view class="weui-cell weui-cell_access cell_style " style="width:120%">
+        <div class="weui-cell__bd ">
+
+          <input style='width:100%;color:black;font-size:0.85rem;' bindblur="setActivityLocation" value="{{activityData.activityLocation}}"></input>
+        </div>
+      </view>
+    </view>
+
+      <view style='height:10rem;padding:0.5rem;font-size:0.8rem;color:black;' bindtap='goToDetail'>
+      {{activityData.activityDetails}}
+      </view>
+    <!-- </view> -->
+
+  </view>
+  <button class='release_button' bindtap='releaseActivity'>发布活动</button>
+
+</scroll-view>
+<view class='img_modal' wx:if="{{showPicModal}}">
+  <view class='img_modal_head'  bindtap='hideModalPic'>
+    <view class='img_modal_title'>海报模板</view>
+    <image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAANlBMVEUAAACKioqHh4eJiYmKioqJiYmLi4uJiYmJiYmKioqJiYmKioqJiYmKioqKioqJiYmIiIiJiYk2P4iMAAAAEnRSTlMA/gi6+FBExRPx1MzHuZCCWFS4VkLlAAAAs0lEQVRIx53UOxLDQAgEUbFaJPlv3/+yLpx0qMYERLyaqglY/pnxahxvWfsZDy8ijkrZYx1SzKgUjBQYLzBeYLzAeIHxAuMFxguMFxgvMF5gnMCsGCEwVmD20REYhDUIbxDeIKy5IqS5RbzlLe3StRUfupYi6VqLpWNyzhINkzE3usacC4wXGC8wXmC8wHiB8QLjBcYLjBcYLzBeYLzAdAQGYQ2iZfKCODf3X8zR+W8l+vMFFTcFxZehLigAAAAASUVORK5CYII="
+      class='off_img'></image>
+  </view>
+  <scroll-view class='img_modal_body' scroll-y="true">
+  <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAAAP1BMVEUAAAD06inz6yjz6in06ir/7yD06iv06ij06Sn37yj17Cnz6Sn06ir06in06in06ir06yn06ir06in36yj06ioAUAtPAAAAFHRSTlMAwEDwgBAwYOAgULDPoJDQcJ9vP8nNbHIAAANFSURBVGje5ZrbdoMgEEXljuAthv//1q7VmpwQQxxkfOp5i1W2M2cYUdr9X93vd9tdJHPXk1DpqUFoZ1kBYRrSJ6m4MoHCTaUv8rpvJfSTT4caXBPilmjyjhMxi18pLsyq8uG1k+blDqQefZ40WY2QQ4L8FMzHWF18xUymjqETNIZv5b3MONPXFLQRmAraHAYtgFnJDKtoCFyArEViyhwSZcgW+qf/porh5SkXB0s8GWHQZR/BKEuNQ7n6PhqJFIfzTmgh+RIe0/tkZ3UESq82Bs6ppWwjxPIpQysDsSylE6bNDzAaKLZgCMFz+oTxH2/VbOkMXaPi1pO/JGtqX3f4YsLsZnorAkOJbqetX2OCtNvidm3077huJyBh/nMg/rh6pSY8YwJC2QfiSNNAHeQU91w4eCRVqsDjm+6pgVjUDSWUmPVoaiASEFIor/Z5NLVGSHlIiznCAsFcGd4PxI4NApv7N5ccK6Sb80ENTGKCoJjGfH7OHS/EomJhycQM6dTTFFgSOCF4eMmspHtuiM76+p/vHTfEwXn0I2YIzsWPyApBhtTrhfoiSIJBJUgQuYa/uxO5bn0LJKRjlRedMw0iElGucDUFMlMhSxlijiCaAiguLQai8ROJ4cOh8eHqEsaF48WQa9oK2hWIihUCG2L2dDHXtXrUs+SGjNmzcAKSE+Kz9y2HKxkhPazGz8QMWeD7S4sKvJCIpvZiysgKMe+vwAEPBRYIjPa7dZjjhAxYMWb5EmwQLOr3r/eSDzJ+WF/P1IuPS6T8EuoIoSCxlhTIvpQ8NRQtoqR1+X2ncoiPQaIwJzyOtwl3rEvruBsDw6jihxrBkzCMFMpVpyzT1y7x7Y9Doy0B671CmO0Uq76n3SiY38oYDzpTC8USPsQvD4ppYBxWz5hafJEZg0Cx9Yw1JfRZEkW5ExtB5Pk85rt51ftzCjOdQlFrdRj0juFqN42NVvU7sxIb2EISEfUpNiIhmvXrhXYCIi2VrVQlKAZTIKw+QXN12fcx39KfwtsQd5f/h4ZCGGeKEiQR9a+EwPjYxT0n5xNRY9/yBBIEgjqLgDf6IJzoWFY4Vs+lGOLSd2wyQcecpMS42O4C9VLKResgpTTdv9QPiIKZLKzsGs8AAAAASUVORK5CYII=' class='add_selfimg' bindtap='upLoadImg'></image>
+    <view class='item' wx:for="{{actPic}}" wx:if="{{item.picList}}">
+      <view class="{{item.isShow?'item_head':'item_head border_gray'}}" data-index="{{index}}" bindtap='handlePartPic'>
+        <view>{{item.picType}}</view>
+        <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoBAMAAAB+0KVeAAAAMFBMVEUAAACPj4+KioqKioqJiYmKioqJiYmKioqKioqHh4eKioqJiYmKioqJiYmLi4uKiorAB/WdAAAAD3RSTlMAEGDwoDDQz5AgsFDg30DPVNscAAAAeUlEQVQoz2MYOYAxAMHmhLGZPiEEJyfAVOYrwDXVw5kyv2EsNoQmVmOYSf4OCJOCTSE0xxck+/n+CoBp/URkV+kXgkjubwLIgkzfBZBMYUCygRNiHwKwAK0Q/4Tu1/UNDDA/IIDYJ6BijFDJr3fADCspCwGGUUACAACDMBXEOxnjIgAAAABJRU5ErkJggg=='
+         wx:if="{{item.isShow}}" ></image>
+          <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeBAMAAADJHrORAAAAFVBMVEUAAADNzc3Pz8/Pz8/Nzc3MzMzNzc3tWpI/AAAAB3RSTlMA8BAw0M9wQdMT7wAAACtJREFUGNNjoAlIQuOLKqDyDYNQ+cz0UIDGF0FT74QmrUA7aQaYNCK8aAUAL0IGgsC/dsEAAAAASUVORK5CYII='
+         wx:if="{{!item.isShow}}" ></image>
+      </view>
+      <view class='item_content' wx:if="{{item.isShow}}">
+      <image src='{{i.pic}}' wx:for="{{item.picList}}" wx:for-item="i" bindtap='selectActPic' data-src="{{i.pic}}"></image>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view class='mask' bindtap=''  wx:if="{{showPicModal}}">
+</view>

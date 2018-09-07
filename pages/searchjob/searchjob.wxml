@@ -1,0 +1,86 @@
+<!--pages/searchjob/searchjob.wxml-->
+<view class='search'>
+
+  <!--搜索栏头部  -->
+  <view class='search_head'>
+
+    <view class='search_head_left'>
+      <icon type="search" size="15" color="gray" class='search_activity_img' />
+      <icon type="clear" size="15" color="gray" class='clear_img' catchtap='clearInput' wx:if="{{showClear==true}}" />
+      <input placeholder="{{listId==1?'搜索你喜欢的兼职':'搜索你喜欢的活动'}}" placeholder-style='font-size:0.8rem' bindinput="bindKeyInput" value='{{inputValue}}'></input>
+    </view>
+    <view class='search_head_right' catchtap='searchGoods' >搜索</view>
+
+  </view>
+
+
+  <!--搜索记录  -->
+  <view class='search_record' wx:if="{{showRecord==true&&searchRecord.length>0}}">
+    <view style='width:100%;'>
+      <view style='font-size:0.8rem;display:flex'>
+      <view style='width:50%'>搜索记录</view>
+      <view style='width:50%;text-align:right;padding-right:0.9rem;color:red;' bindtap='clearSearchHistory'>清除</view>
+      </view>
+      <view class='search_content'>
+        <view wx:for="{{searchRecord}}" bindtap='tapRecord' data-value='{{item}}'>{{item}}</view>
+
+      </view>
+    </view>
+
+  </view>
+
+
+  <scroll-view class='scroll_content' scroll-y="true" wx:if="{{showJobList==true}}" style='padding-top:15%;'>
+  <!--兼职列表  -->
+     <view class='job_item' wx:for="{{joblist}}" bindtap='goToJobDetail' data-id="{{item.jobId}}" wx:if="{{joblist.length>0&&listId==1}}">
+      <view class='job_item_top'>
+        <view class='job_item_top_left'>{{item.jobName}}</view>
+        <view class='job_item_top_right'>
+          {{item.wage}}
+          <text style='font-size:0.65rem;'> {{item.wageType}}</text>
+        </view>
+      </view>
+
+      <view class='job_item_middle'>
+        <text> {{item.startWorkDate}}起工作</text>
+
+        <image src="/imgs/daily.png" class='pay_way_img' wx:if="{{item.calculateMoneyType==1}}"></image>
+        <image src="/imgs/weekly.png" class='pay_way_img' wx:if="{{item.calculateMoneyType==2}}"></image>
+        <image src="/imgs/monthly.png" class='pay_way_img' wx:if="{{item.calculateMoneyType==3}}"></image>
+      </view>
+
+
+      <view class='job_item_bottom'>
+        <view class='job_item_bottom_left'>{{item.intervalTime}}</view>
+        <view class='job_item_bottom_right'>
+          <image src='/imgs/location.png' style='width:12px;height:15px;vertical-align:middle;margin-right:5%;'></image>
+          <text style='font-size:0.8rem;'>{{item.workDistrict}}</text>
+        </view>
+      </view>
+    </view>
+     <!--活动列表  -->
+       <view class='activity_content_item' bindtap='goToActivityDetail' data-id="{{item.id}}" wx:for="{{joblist}}" wx:if='{{joblist.length>0&&listId==2}}'>
+    <image src='{{item.activityPic}}' style=''></image>
+    <view class='item_title activity_content_item_title'>{{item.activityName}}</view>
+    <view class=' activity_content_item_msg'>
+      <view style='width:80%;text-align:left;'>
+        <image src='/imgs/time_icon.png' class='time_icon'></image>
+        <text>{{item.activityStartTime}}开始</text>
+      </view>
+      <view style='width:20%;padding-bottom:5%;'>
+
+        <image src='/imgs/location.png' style='width:12px;height:15px;vertical-align:middle;margin-right:5%;'></image>
+        <text style='font-size:0.8rem;color:gray;'>{{item.activityDistrict}}</text>
+
+      </view>
+    </view>
+  </view>
+    
+      <view class='no_content' wx:if='{{showNone==true}}'>
+    </view>  
+
+
+    
+  </scroll-view>
+
+</view>

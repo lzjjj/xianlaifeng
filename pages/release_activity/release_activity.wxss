@@ -1,0 +1,156 @@
+/* pages/release_activity/release_activity.wxss */
+
+.release_activity {
+  width: 100%;
+  color: gray;
+  height: 100%;
+}
+
+.activity_item {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  /* padding: 3%; */
+}
+
+.activit-input {
+  padding-left: 5%;
+}
+
+.activity_item_placeholder {
+  color: gainsboro;
+  font-size: 0.85rem;
+}
+
+.picker_border {
+  border-bottom: 1px #f5f5f5 solid;
+}
+
+.city_choose {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACfklEQVRIS6VXzXHTUBDe1ZOsI2KG2EeSA5E5YVeAqSC4g6QCQgWYCpJUEFMBTgURFSBO2OEQc7TCDOIoy9IysqJBSPuenmxf9Xa//fbn2zWC5o/uHSdZWycA+JYADhFwsDUlWAKSD0Az0Ylv8CgMdVyizqPN3cEpEF4AoKN+TyESTkR/ddXkVwmcs+xcZyybHP33ncATdjRWsVcCx4uuj4CvWoE+PiYg33KDocxWChzPe5eI8G4X0H82NDXd4IzzwQLTd+cwMez7/UBzazKSN9aLX17VFwu8WXRnAHjCARPBFxDJpHC2WXSzLp/IS0I3phvUekQGHALgkzowfTLd4JQLKJ73PER4zX0TnehptdFqwPGPZyNMxW3NAcFPYUcDWaeqysOluwacpQ4AP7dhW7yVTgGmZ+bxw7Tss8540c3q9aEKTEAfLTeYqBpOlm7OVj/VwDdJOZDNvLcEhOdMtsamG8yUjHO1sn8zxqFI10N8GS451vISAYg0OqratRqnTI3MdD2uOqG7g0FCeMtpOQF9s9wgXyilHw+8XQrGNV9PCglpiqnhAaYOIQyQjHNp7ZnGyt5KJVNerzZ6Rn9MN2A3mhxYyVoPXDUJyu20F+sGwVED78NaUtsiV40XiEqDZQnPFonVX41UBWkEzkfF+KpX1fyVwHSIxw/+XsCZcSyRUc4xEVxZ/ZV8vB6NGhln77ZqFtk+L4cl+IaGahQQjol0XZZxJdcG50+LcWGousN0U6zd1dVouZ2b6bHZWY90j3mlZEpHJV8IXvk00uniqr9WqS6Mk3nvnBAutpETvBf91WWbcduJcQGQX6IA3AWpE8ROjIsR20au+SetGsxf/MotLj1BU1cAAAAASUVORK5CYII=") no-repeat;
+  background-size: 1rem 1rem;
+  background-position: 0 50%;
+  padding-left: 10%;
+  font-size: 0.85rem;
+  color: #fcd917 !important;
+}
+
+.activity_describe {
+  margin-top: 3%;
+  background-color: white;
+  display: flex;
+  padding-left: 4%;
+}
+
+.activity_describe>textarea {
+  margin-left: 3%;
+  padding-right: 3%;
+  height: 8rem;
+  margin-top: 2%;
+}
+
+.add_img {
+  width: 3rem;
+  height: 1.8rem;
+  vertical-align: middle;
+  margin-top: 3%;
+  margin-left: 40%;
+}
+
+.release_button {
+  background-color: #fcd917;
+  width: 96%;
+  margin-top: 20%;
+  color: white;
+  margin-bottom: 3%;
+}
+
+.location_input {
+  width: 75%;
+  padding-left: 3%;
+  color: black;
+  font-size: 0.85rem;
+  overflow: hidden; /*超出部分隐藏*/
+  white-space: nowrap; /*不换行*/
+  text-overflow: ellipsis; /*超出部分文字以...显示*/
+}
+
+.img_modal {
+  width: 100%;
+  height: 85%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  z-index: 100;
+}
+
+.img_modal_head {
+  position: relative;
+  padding-bottom:0.5rem; 
+}
+
+.img_modal_title {
+  padding-top: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.off_img {
+  position: absolute;
+  right: 1rem;
+  top: 0.8rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.img_modal_body {
+  height: 90%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.item_head {
+  margin-top: 0.9rem;
+  display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: -moz-box; /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox; /* 混合版本语法: IE 10 */
+  display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+  display: flex;
+  font-size: 0.8rem;
+  border-bottom: 1px #fcd917 solid;
+  padding-bottom: 0.5rem;
+}
+.border_gray{
+   border-bottom: 1px #F5F5F5 solid;
+}
+.item_head>view {
+  width: 80%;
+  padding-left: 1.5rem;
+}
+
+.item_head>image {
+  width:1.2rem;
+  height:1.2rem;
+  vertical-align: middle;
+}
+.item_content{
+   display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: -moz-box; /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox; /* 混合版本语法: IE 10 */
+  display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+  display: flex;
+  flex-wrap: wrap;
+}
+.item_content>image{
+  width:28%;
+  height:4rem;
+  margin-left: 0.8rem;
+  margin-top: 0.5rem;
+  /* margin-right: 0.5rem; */
+}
+.add_selfimg{
+   width:2rem;
+   height: 2rem;
+   display: block;
+   margin: 0 auto; 
+}

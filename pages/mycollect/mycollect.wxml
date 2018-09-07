@@ -1,0 +1,48 @@
+<!--pages/myrelease/myrelease.wxml-->
+<view class='myrelease'>
+
+  <!-- <view class='myrelease_head'>
+    <view class="{{isParttime?'title_actived':'title_unactived'}}" bindtap='selectRecord' data-id="2">兼职</view>
+    <view class="{{isParttime==false?'title_actived':'title_unactived'}}" data-id="1" bindtap='selectRecord'>活动</view>
+  </view> -->
+  <scroll-view scroll-y="true" class='scroll'>
+    <view wx:if="{{isParttime}}">
+      <view class="{{item.job_id==null?'myrelease_item has_delete':'myrelease_item'}}" wx:for="{{ptjCollection}}" >
+        <view class='title item_title'>{{item.job_name}}</view>
+        <view class='msg'>
+
+          <view>收藏时间：{{item.collectionTime}}</view>
+        </view>
+        <view class='option' wx:if="{{isParttime}}">
+          <view class='option_left' data-typeId='2' data-id="{{item.actId}}" bindtap='optionpCollection'>取消收藏</view>
+         
+          <view class='option_right' data-typeId='2' data-id="{{item.actId}}" bindtap='moveToDetail'>查看兼职</view>
+
+        </view>
+
+      </view>
+      <view class='no_content' wx:if='{{showPTJNone ==true}}'> </view>
+     
+    </view>
+
+
+    <view wx:if="{{!isParttime}}">
+      <view class="{{item.act_id==null?'myrelease_item has_delete':'myrelease_item'}}" wx:for="{{activityCollection}}" >
+        <view class='title item_title'>{{item.activityName}}</view>
+        <view class='msg'>
+
+          <view>收藏时间：{{item.collectionTime}}</view>
+        </view>
+        <view class='option' wx:if="{{!isParttime}}">
+          <view class='option_left' data-typeId='1' data-id="{{item.actId}}" bindtap='optionpCollection'>取消收藏</view>
+         
+          <view class='option_right' data-typeId='' data-id="{{item.actId}}" bindtap='moveToDetail'>查看活动</view>
+
+        </view>
+
+      </view>
+       <view class='no_content' wx:if='{{ showActivityNone==true}}'> </view>
+    </view>
+  </scroll-view>
+
+</view>

@@ -1,0 +1,102 @@
+                                                                                                                                                                              <!--index.wxml-->
+<view class="index">
+
+
+
+  <view class="{{showFilter==true?'add':''}}" style='width:100%;background-color:white;'>
+
+    <!--搜索栏  -->
+    <view class='index_head'>
+
+      <view class="index_location" bindtap='selectCity'>
+        <text>{{locatedCity}}</text>
+        <image src='/imgs/down.png' class='img_down'></image>
+      </view>
+      <!-- <icon type="search" size="15" color="gray" class='search' /> -->
+      <view class=' index_input'>
+
+        <input class='search_img' placeholder='搜索你喜欢的兼职' placeholder-class='placeholder_style ' disabled="true" bindtap='goToSearch'>
+
+        </input>
+
+      </view>
+
+
+
+    </view>
+
+    <!--筛选栏  -->
+    <view class='index_filter'>
+      <view bindtap='showFilterArea' data-value="区域">
+        <text class="{{isArea==true?'filter_item_select':'' }}">区域</text>
+        <image src="{{isArea==true?'/imgs/triangle_up.png':'/imgs/triangle_down.png'}}" class='filter_img'></image>
+      </view>
+      <view bindtap='showFilterArea' data-value="类型">
+        <text class="{{isType==true?'filter_item_select':'' }}">类型</text>
+        <image src="{{isType==true?'/imgs/triangle_up.png':'/imgs/triangle_down.png'}}" class='filter_img'></image>
+      </view>
+      <view bindtap='showFilterArea' data-value="时间">
+        <text class="{{isTime==true?'filter_item_select':'' }}">时间</text>
+        <image src="{{isTime==true?'/imgs/triangle_up.png':'/imgs/triangle_down.png'}}" class='filter_img'></image>
+
+      </view>
+    </view>
+
+  </view>
+  <!--兼职信息内容  -->
+  <view class='scroll_content' >
+    <view class='job_item' wx:for="{{joblist}}" bindtap='goToJobDetail' data-id="{{item.jobId}}">
+      <view class='job_item_top'>
+        <view class='job_item_top_left'>{{item.jobName}}</view>
+        <view class='job_item_top_right'>
+          {{item.wage}}
+          <text style='font-size:0.65rem;'> {{item.wageType}}</text>
+        </view>
+      </view>
+
+      <view class='job_item_middle'>
+        <text> {{item.startWorkDate}}起工作</text>
+
+        <image src="/imgs/daily.png" class='pay_way_img' wx:if="{{item.calculateMoneyType==1}}"></image>
+        <image src="/imgs/weekly.png" class='pay_way_img' wx:if="{{item.calculateMoneyType==2}}"></image>
+        <image src="/imgs/monthly.png" class='pay_way_img' wx:if="{{item.calculateMoneyType==3}}"></image>
+      </view>
+
+
+      <view class='job_item_bottom'>
+        <view class='job_item_bottom_left'>{{item.intervalTime}}</view>
+        <view class='job_item_bottom_right'>
+          <image src='/imgs/location.png' style='width:0.625rem;height:0.75rem;vertical-align:middle;margin-right:5%;'></image>
+          <text style='font-size:0.75rem;'>{{item.workDistrict}}</text>
+        </view>
+      </view>
+    </view>
+
+
+ <view class='no_content' wx:if='{{showNone==true}}'>
+    </view> 
+
+  </view>
+
+
+  <!--筛选  -->
+  <view class='filter_area' wx:if="{{showFilter==true}}">
+    <view style='background-color:#F5F5F5;padding-left:1.06rem;font-size:0.8rem;color:gray;padding-top:1%;padding-bottom:1%;'>选择{{filterItemName}}</view>
+
+    <view class='filter_content' style="{{isTime==true?'align-items:center;justify-content:center;':'' }}">
+      <!-- <view class='filter_select filter_all ' style="{{isTime==true?'padding-right:20%;padding-left: 20%;margin-top:3%;':'' }}">全部 </view> -->
+      <view class="{{item.isSelect?'filter_select':'filter_unselect'}}" wx:for="{{areaList}}" wx:if="{{isArea==true}}" data-id='{{item.district}}' data-diffType="area" data-index="{{index}}" bindtap='selectFilter'>{{item.district}}</view>
+      <view class="{{item.isSelect?'filter_select':'filter_unselect'}}" wx:for="{{jobTypeList}}" wx:if="{{isType==true}}" data-id='{{item.id}}' data-diffType="jobType" data-index="{{index}}" bindtap='selectFilter'>{{item.job_type}}</view>
+      <view class="{{item.isSelect?'filter_select':'filter_unselect'}}" wx:for="{{timeTypeList}}" wx:if="{{isTime==true}}" style="{{isTime==true?'padding-right:20%;padding-left: 20%;margin-top:3%;':'' }}" data-id='{{item.timeTypes_String}}' data-diffType="timeType"
+        data-index="{{index}}" bindtap='selectFilter'>{{item.name}}</view>
+
+    </view>
+    <button class='filter_button' bindtap='filterJobList'>确认</button>
+  </view>
+
+  <view wx:if="{{showFilter==true}}" class='mask' bindtap='hideFilter'>
+  </view>
+
+
+
+</view>

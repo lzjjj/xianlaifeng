@@ -1,0 +1,17 @@
+/* pages/edit_descrition/edit_descrition.wxss */
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  height: 15rem;
+  border-bottom: 1px #f5f5f5 solid;
+  padding: 0.5rem;
+}
+button {
+  background-color: #fcd917;
+  width: 94%;
+  position: absolute;
+  bottom: 2%;
+  left: 3%;
+  color: white;
+}

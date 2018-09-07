@@ -1,0 +1,38 @@
+/* pages/myresume/myresume.wxss */
+.myresume{
+  background-color: #F5F5F5;
+  width: 100%;
+ height: 100%; 
+ position: fixed;
+}
+.basic_msg{
+  margin-top: 3%;
+  padding:5%;
+  width: 100%;
+  height: auto;
+ background-color: white;
+}
+.basic_msg_title{
+  display: flex;
+  width: 100%;
+ 
+ 
+}
+.basic_msg_title_left{
+  width:1%;
+  height:32px;
+  background:rgba(252,217,23,1);
+}
+.basic_msg_title_center{
+  width:28%;
+  margin-left:2%;
+  font-size:1rem;
+}
+.basic_msg_title_right{
+  width:60%;text-align:right
+}
+.basic_msg_title_right >image{
+  width:20px;
+  height:20px;
+  vertical-align: middle;
+}

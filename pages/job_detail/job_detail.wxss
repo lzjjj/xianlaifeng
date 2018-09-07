@@ -1,0 +1,121 @@
+/* pages/job_detail/job_detail.wxss */
+
+.job_detail {
+  width: 100%;
+  height: 70%;
+  background-color: #f5f5f5;
+  padding-bottom: 20%;
+  overflow-y: auto;
+}
+
+.job_detail_head {
+  width: 100%;
+  padding: 3%;
+  border-top: 1px #F5F5F5 solid;
+  background-color: white;
+}
+
+.job_name {
+  width: 94%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.job_detail_head_bottom {
+  background-color: white;
+  display: flex;
+  width: 94%;
+  padding: 3%;
+  margin-top: -3%;
+  border-bottom: 1px #F5F5F5 solid;
+}
+
+.job_detail_head_bottom_left {
+  flex-grow: 4;
+  color: #fcd917;
+}
+
+.job_detail_head_bottom_right {
+  flex-grow: 1;
+  text-align: right;
+  color: gray;
+  font-size: 0.8rem;
+}
+
+.job_detail_demand {
+  padding-left: 3%;
+  padding-bottom: 3%;
+  color: gray;
+  background-color: white;
+  border-bottom: 1px #F5F5F5 solid;
+  margin-bottom: 3%;
+  font-size: 0.9rem;
+}
+
+.job_detail_demand>view {
+  padding-top: 2%;
+}
+
+.job_detail_demand text {
+  color: black;
+}
+
+.job_detail_content {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 3%;
+}
+
+.basic_msg_title_left {
+  width: 1%;
+  height: 1.1rem;
+  margin-top: 1.5%;
+  margin-right: 2%;
+  background: rgba(252, 217, 23, 1);
+}
+
+.job_detail_bottom {
+ 
+  width: 100%;
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0%;
+  height: 2.5rem;
+  overflow: hidden;
+ z-index: 5;
+ background-color: white;
+ padding-top:2%;
+  padding-bottom:2%;
+
+}
+
+.job_detail_bottom_left,.job_detail_bottom_middle {
+  position: relative;
+  width: 26%;
+  text-align: center;
+  border: 1px #fcd917 solid;
+  border-radius: 0.2rem;
+  line-height: 2.5rem;
+  color: #fcd917;
+  margin-left: 2%;
+  margin-right: 2%;
+  
+}
+
+.job_detail_bottom_left>image {
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: middle;
+  margin-top: -3%;
+  margin-right: 1%;
+}
+.kefu_icon{
+  position: absolute;
+  top:25%;
+     opacity: 0;   
+}
+

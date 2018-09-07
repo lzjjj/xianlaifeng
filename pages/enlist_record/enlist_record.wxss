@@ -1,0 +1,55 @@
+/* pages/enlist_record/enlist_record.wxss */
+.enlistRecord{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #F5F5F5; 
+}
+.enlistRecord_head{
+  border-top: 1px #F5F5F5 solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  background-color: white;
+}
+.enlistRecord_head>view{
+   width:50%; 
+  text-align: center;
+  height: 2.5rem;
+  line-height:3rem;
+}
+.title_actived{
+  color:#FCD917;
+  border-bottom: 1px #FCD917 solid;
+}
+.title_unactived{
+  color:black;
+  border-bottom:none;
+}
+.enlistRecord_content{
+  width: 100%;
+  margin-top: 3%;
+  background-color: white;
+  height: 100%;
+   margin-bottom: 3%;
+}
+.enlistRecord_content_item{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px #F5F5F5 solid;
+  
+}
+
+.item_state{
+  
+  width:20%;
+  text-align:center;
+  padding-top:3%;
+  color:white;
+}
+
+.title{
+color:rgba(51,51,51,1);
+}

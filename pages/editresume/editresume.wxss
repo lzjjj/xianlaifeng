@@ -1,0 +1,23 @@
+/* pages/editresume/editresume.wxss */
+.editresume{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+ background-color: #F5F5F5;
+ 
+ color: gray;
+}
+.head_img{
+  width:2.2rem;
+  height:2.2rem;
+    /* margin-left:-1.5rem;   */
+  vertical-align:middle;
+  border-radius:50%;
+}
+.font_style{
+  font-size: 0.9rem;
+  
+}
+.letter_space{
+  letter-spacing: 1.85em;
+}

@@ -1,0 +1,31 @@
+<!--pages/message/message.wxml-->
+<view class='message'>
+  <view class='message_item'>
+    <image src='data:image/png;base64,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'></image>
+    <view>
+
+      <view class='kefu_name'>闲来蜂客服</view>
+      <view class='summary '>点击我，和客服聊聊吧！</view>
+    </view>
+  </view>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:15%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:25%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:35%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:45%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:55%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:65%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:75%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:85%;'>
+  </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:90%;'>
+  </contact-button>
+</view>

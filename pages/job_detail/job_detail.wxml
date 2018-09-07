@@ -1,0 +1,91 @@
+<!--pages/job_detail/job_detail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<scroll-view class='job_detail' scroll-y="true">
+  <view class='job_detail_head'>
+
+    <view class='job_name'>{{jobDetail.jobName}}</view>
+  </view>
+  <view class='job_detail_head_bottom'>
+    <view class='job_detail_head_bottom_left'>
+      <text> {{jobDetail.wage}}{{jobDetail.wageType}}</text>
+      <image src="/imgs/daily.png" class='pay_way_img' wx:if="{{jobDetail.calculateMoneyType==1}}"></image>
+      <image src="/imgs/weekly.png" class='pay_way_img' wx:if="{{jobDetail.calculateMoneyType==2}}"></image>
+      <image src="/imgs/monthly.png" class='pay_way_img' wx:if="{{jobDetail.calculateMoneyType==3}}"></image>
+    </view>
+    <view class='job_detail_head_bottom_right'>
+      <image src="/imgs/time_icon.png" class='time_icon'></image>
+      <text> {{jobDetail.releaseTime}}</text> </view>
+  </view>
+
+
+  <view class='job_detail_demand'>
+    <view>招聘类型：
+      <text>{{jobDetail.jobType}}</text>
+    </view>
+    <view>招聘人数：
+      <text wx:if="{{jobDetail.limitNumber!=0}}">{{jobDetail.limitNumber}}</text>
+      <text wx:if="{{jobDetail.limitNumber==0}}">不限</text>
+    </view>
+    <view>性别要求：
+      <text wx:if="{{jobDetail.sexDemand==1}}">男</text>
+      <text wx:if="{{jobDetail.sexDemand==2}}">女</text>
+      <text wx:if="{{jobDetail.sexDemand==3}}">不限</text>
+    </view>
+  </view>
+
+  <view class='job_detail_demand'>
+    <view>工作时间：
+      <text>{{jobDetail.startWorkTime}}~{{jobDetail.endWorkTime}}</text>
+    </view>
+    <view>上班时间段：
+      <text>{{jobDetail.workTime}}</text>
+    </view>
+    <view>工作地点：
+      <text>{{jobDetail.workStreet}}</text>
+    </view>
+  </view>
+
+  <view class='job_detail_content'>
+    <view style='display:flex;padding-left:3%;padding-top:2%;'>
+      <view class='basic_msg_title_left'></view>
+      <text>工作内容</text>
+    </view>
+     <view style='padding-left:3%;font-size:0.8rem;'> <template is="wxParse" data="{{wxParseData:jobContent.nodes}}" /></view> 
+    
+  </view>
+
+  <view class='job_detail_demand' style='margin-bottom:0'>
+    <view>发布机构：
+      <text wx:if="{{jobDetail.userCompany!=''&&jobDetail.userCompany!=null}}">{{jobDetail.userCompany}}</text>
+      <text wx:if="{{jobDetail.userCompany=='' || jobDetail.userCompany==null}}">无</text>
+    </view>
+    <view>联系人：
+      <text>{{jobDetail.userName}}</text>
+    </view>
+
+  </view>
+
+
+</scroll-view>
+<view class='job_detail_bottom'>
+<view class='job_detail_bottom_left'  bindtap='optionpCollection'>
+    <image wx:if="{{isCollection==0}}" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAANlBMVEUAAAD82Rb82Rb/2hX/1xD/3xD72Rb82Rb92xT82Rb72Rb82Bf82Rb82Bf82Rb82Bf82hX82ReaS49lAAAAEXRSTlMA8IAwIBDQoD+wkMBP4J/fYNRpG6YAAADeSURBVDjLxZLRjoQwCEUBKa1Vx+X/f3axXbNhWofHuS/mmtMjmMK3k2vMFFUOoRUxRwwrUajKmBLmUARgqkgEYKpQ1FSR6KOq7NRETUV7AZelUN1QLZL6m3Rc7dwqleXv91k/Wh9OXuzaK54JHpJOtKOdkgeK5WaeqQVx8S1i7j4y8RsZzwmym3k6565+AC0whtR3pdm93XyXdQJJfjskrno98/j5O6UPyi/VF4+L9PwoNwSJsGGs+2y5VA257jihPWfrbWKGel+6bPhkvUM183/lrDquJ4a48CrwnfwCG8EHPFwz7s8AAAAASUVORK5CYII='></image>
+     <text wx:if="{{isCollection==0}}">收藏</text>
+    <image wx:if="{{isCollection==1}}" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAANlBMVEUAAAD88Av87wv87wr88Ar77wj88Ar/7wv/7wj88Av88Ar78Av/7wD97wn88gv88gr78Ar88AtFCKJrAAAAEXRSTlMAwGCggEDgMCDvsJAQcF9Pz5dvibQAAAC+SURBVDjLndPbDoQgDEXRKVcBL9P//9kRIzLmFDDuV1dsUuDzLu8fIKKxscx2iBzzd2QU76m+mV1Gbu4iw0em+6PAR6H3K81nqW0mvpqaJlYUBeU3Q4FvBTKbv76vibgZpdXnYxjm8457lf2roRkqVQ+j2QKbxjScR9OgQlMjNCTcJMgAitK0V+MCIgeIheBCIcHraesQx2fwlJdC1H7ghSlxTVTuBYmLipnYv/EkLIpYF1KYhkWlSXhiedzjfl6bIr5L6UDRAAAAAElFTkSuQmCC'></image>
+    <text wx:if="{{isCollection==1}}">已收藏</text>
+  </view>
+  <view class='job_detail_bottom_left' wx:if="{{jobDetail.auditStatus==1}}">
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:1%;'>
+   </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:30%;'>
+   </contact-button>
+  <contact-button type="default-dark" size="100" session-from="weapp" class='kefu_icon' style='left:60%;'>
+  </contact-button>
+    <image src='/imgs/consult.png'></image>
+    <text>咨询</text>
+  </view>
+  <button wx:if="{{jobDetail.auditStatus==1}}" class='button_allow' bindtap='handleEnlist' data-id='{{id}}' data-time='{{jobDetail.endWorkDate}}'>我要报名</button>
+  
+ <button wx:if="{{jobDetail.auditStatus==0}}" class='button_notallow'>审核中...</button>
+  <button wx:if="{{jobDetail.auditStatus==2}}" class='button_notallow'>兼职已下架</button>
+</view>

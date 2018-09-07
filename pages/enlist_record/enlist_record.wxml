@@ -1,0 +1,62 @@
+<!--pages/enlist_record/enlist_record.wxml-->
+<view class='enlistRecord'>
+
+    <!-- <view class='enlistRecord_head' >
+    <view class="{{isParttime?'title_actived':'title_unactived'}}" bindtap='selectRecord' data-id="2">兼职</view>
+    <view class="{{isParttime==false?'title_actived':'title_unactived'}}" bindtap='selectRecord' data-id="1">活动</view>
+  </view>   -->
+
+  <scroll-view class='enlistRecord_content' scroll-y="true">
+
+    <view class='enlistRecord_content_item' wx:if="{{isParttime==false}}" wx:for="{{activityList}}" bindtap='goToDetail' data-id="{{item.actId}}">
+      <view style='width:72%;padding: 4%;'>
+        <view class='item_title'>{{item.activityName}}</view>
+        <view style='font-size:0.75rem;color:rgba(153,153,153,1);'>报名时间:{{item.joinTime}}</view>
+      </view>
+      <view style='background-color:rgba(242,201,102,1);' class='item_state' wx:if="{{item.joinStatus==0}}">
+        <view>正在</view>
+        <view>审核</view>
+
+      </view>
+      <view wx:if="{{item.joinStatus==1}}" style='background-color:rgba(92,222,153,1);' class='item_state'>
+        <view>报名</view>
+        <view>成功</view>
+      </view>
+      <view wx:if="{{item.joinStatus==2}}" style='background-color:rgba(233,101,101,1);' class='item_state'>
+        <view>报名</view>
+        <view>失败</view>
+      </view>
+    </view>
+
+
+
+     <view class='enlistRecord_content_item' wx:if="{{isParttime==true}}" wx:for="{{ptjList}}" bindtap='goToDetail' data-id="{{item.actId}}">
+      <view style='width:72%;padding: 4%;'>
+        <view class='title'>{{item.job_name}}</view>
+        <view style='font-size:0.75rem;color:rgba(153,153,153,1);'>报名时间:{{item.joinTime}}</view>
+      </view>
+      <view style='background-color:rgba(242,201,102,1);' class='item_state' wx:if="{{item.joinStatus==0}}">
+        <view>正在</view>
+        <view>审核</view>
+
+      </view>
+      <view wx:if="{{item.joinStatus==1}}" style='background-color:rgba(92,222,153,1);' class='item_state'>
+        <view>报名</view>
+        <view>成功</view>
+      </view>
+      <view wx:if="{{item.joinStatus==2}}" style='background-color:rgba(233,101,101,1);' class='item_state'>
+        <view>报名</view>
+        <view>失败</view>
+      </view>
+    </view> 
+
+<view class='no_content' wx:if='{{showNone1&&!isParttime}}'>
+    </view> 
+    <view class='no_content' wx:if='{{showNone2&&isParttime}}'>
+    </view> 
+
+  </scroll-view>
+
+
+
+</view>

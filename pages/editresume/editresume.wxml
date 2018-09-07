@@ -1,0 +1,116 @@
+<!--pages/editresume/editresume.wxml-->
+
+<view class='editresume'>
+
+
+  <view class="weui-cells" style="margin-top:5%;">
+
+    <view class="weui-cell weui-cell_access cell_style  " bindtap='changeHeadImg'>
+      <div class="weui-cell__bd font_style">
+
+        <p class="letter_space">头像 </p>
+        <view style='width:69%;float:right;'>
+        <image src='{{resume.user_img}}' class='head_img'></image>
+        </view>
+      </div>
+
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </view>
+
+
+    <view class="weui-cell weui-cell_access cell_style  " style='border-bottom:1px #F5F5F5 solid'>
+      <div class="weui-cell__bd font_style">
+
+        <p class="letter_space">姓名 </p>
+        <input value='{{resume.user_name}}' placeholder='请填写您的姓名' style='width:69%;float:right;' bindinput='setUserName'></input>
+      </div>
+
+
+    </view>
+
+<picker style='border-bottom:1px #F5F5F5 solid' range='{{sexList}}' bindchange='setUserSex' value='{px {resume.user_sex==0?"保密":(resume.user_sex==1?"男":"女")}}'>
+    <view class="weui-cell weui-cell_access cell_style  ">
+      <div class="weui-cell__bd font_style">
+        <p class="letter_space">性别 </p>
+        <p style='width:69%;float:right;'>{{resume.user_sex==0?"保密":(resume.user_sex==1?"男":"女")}}</p>
+      </div>
+
+          <image src='/imgs/turnright.png' class='arrow_img'></image>
+    </view>
+     </picker>
+
+
+ <picker  mode="date" value="{{resume.user_birth}}" start="1900-09-01" end="2217-09-01" bindchange='setUserBirthAge' >
+    <view class="weui-cell weui-cell_access cell_style  ">
+    
+      <div class="weui-cell__bd font_style">
+
+        <p>出生日期 </p>
+        <input value='{{resume.user_birth}}' placeholder='请填写您的出生日期' style='width:69%;float:right;' bindinput='setUserAge' disabled='true' ></input>
+      </div>
+
+       
+
+          <image src='/imgs/turnright.png' class='arrow_img'></image>
+      
+      
+
+    </view>
+      </picker>
+
+
+
+
+    <view class="weui-cell weui-cell_access cell_style  ">
+      <div class="weui-cell__bd font_style">
+
+        <p class="letter_space">身高 </p>
+        <input value='{{resume.user_high}}' placeholder='请填写您的身高(cm)' style='width:69%;float:right;' bindinput='setUserHight'></input>
+      </div>
+
+
+    </view>
+
+
+    <view class="weui-cell weui-cell_access cell_style  ">
+      <div class="weui-cell__bd font_style">
+
+        <p class="letter_space">体重 </p>
+        <input value='{{resume.user_weigh}}' placeholder='请填写您的体重(kg)' style='width:69%;float:right;' bindinput='setUserWeigh'></input>
+      </div>
+
+
+    </view>
+
+
+    <view class="weui-cell weui-cell_access cell_style  ">
+      <div class="weui-cell__bd font_style">
+
+        <p>手机号码 </p>
+        <input value='{{resume.user_phone==null?"------":resume.user_phone}}' placeholder='请填写您的手机号码' style='width:69%;float:right;' bindinput='setUserPhone'></input>
+      </div>
+
+
+    </view>
+
+
+
+    <view class="weui-cell weui-cell_access cell_style" bindtap="selectSchool">
+      <div class="weui-cell__bd font_style">
+
+        <p>所在学校 </p>
+        <p style="width:69%;float:right;">{{resume.school_name}}</p>
+      </div>
+
+
+      <image src='/imgs/turnright.png' class='arrow_img'></image>
+
+    </view>
+
+
+  </view>
+
+  <button style='background-color:#FCD917;color:white;margin-top:8%;width:96%' bindtap='resetResume'>保存</button>
+
+</view>
